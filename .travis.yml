@@ -13,6 +13,6 @@ script:
 
 deploy:
   provider: script
-  script: ./.scripts/docker_push
+  script: ./.scripts/docker_push.sh
   on:
     branch: master
