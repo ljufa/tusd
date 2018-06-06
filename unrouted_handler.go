@@ -499,6 +499,12 @@ func (handler *UnroutedHandler) writeChunk(id string, info FileInfo, w http.Resp
 	go handler.Metrics.incBytesReceived(uint64(bytesWritten))
 	info.Offset = newOffset
 
+	// Write all request headers into metadata map
+	if info.Offset == info.Size {
+		for k, v := range r.Header {
+			info.MetaData[k] = v[0]
+		}
+	}
 	return handler.finishUploadIfComplete(info)
 }
 
