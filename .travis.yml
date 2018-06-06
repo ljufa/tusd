@@ -1,25 +1,15 @@
 language: go
 go:
-- 1.5
-- 1.6
-- 1.7
-- 1.8
 - 1.9
-- "1.10"
 sudo: required
 dist: trusty
 group: deprecated-2017Q4
-matrix:
-  allow_failures:
-  - go: tip
-install:
-- true
 
 services:
   - docker
 
 script:
-- ./.scripts/test_all.sh
+- docker build -t "$DOCKER_IMAGE_TAG" .
 
 deploy:
   provider: script
