@@ -3,6 +3,9 @@ language: go
 services:
   - docker
 
+script:
+  - ./.scripts/test_all.sh
+
 deploy:
   provider: script
   script: bash docker_push
