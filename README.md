@@ -1,3 +1,7 @@
+
+>This `tusd` fork copies request headers from the last request to the metadata, so they can be accessed in `post-finish` hook >for authorization and other service chaining purposes. 
+>In particular case, I'm using it to forward JWT token to rest service I'm invoking from the post-finish hook... 
+
 # tusd
 
 <img alt="Tus logo" src="https://github.com/tus/tus.io/blob/master/assets/img/tus1.png?raw=true" width="30%" align="right" />
