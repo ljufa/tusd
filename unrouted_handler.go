@@ -3,6 +3,7 @@ package tusd
 import (
 	"encoding/base64"
 	"errors"
+	"fmt"
 	"io"
 	"log"
 	"math"
@@ -495,6 +496,7 @@ func (handler *UnroutedHandler) PatchFile(w http.ResponseWriter, r *http.Request
 // with the corresponding id. Afterwards, it will set the necessary response
 // headers but will not send the response.
 func (handler *UnroutedHandler) writeChunk(id string, info FileInfo, w http.ResponseWriter, r *http.Request) error {
+	fmt.Printf("Upload client IP: [%s]\n", r.RemoteAddr)
 	// Get Content-Length if possible
 	length := r.ContentLength
 	offset := info.Offset
